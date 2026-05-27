@@ -1,0 +1,154 @@
+<header class="max-lg:collapse bg-base-100 shadow-sm w-full z-50">
+
+  <input
+    id="navbar-toggle"
+    class="peer hidden"
+    type="checkbox"
+  />
+
+  <label
+    for="navbar-toggle"
+    class="fixed inset-0 hidden max-lg:peer-checked:block"
+  ></label>
+
+  <div class="collapse-title navbar px-4">
+
+    <div class="navbar-start">
+
+      <label
+        for="navbar-toggle"
+        class="btn btn-ghost lg:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h8m-8 6h16"
+          />
+        </svg>
+      </label>
+
+      <a
+        class="btn btn-ghost text-xl font-bold tracking-tight"
+        routerLink="/"
+      >
+        {{ brand() | uppercase }}
+      </a>
+    </div>
+
+    <div class="navbar-center hidden lg:flex">
+
+      <ul class="menu menu-horizontal px-1 font-medium">
+
+        <li>
+          <a
+            routerLink="/"
+            routerLinkActive="menu-active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/programadores"
+            routerLinkActive="menu-active"
+          >
+            Programadores
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/proyectos"
+            routerLinkActive="menu-active"
+          >
+            Proyectos
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/solicitudes"
+            routerLinkActive="menu-active"
+          >
+            Solicitudes
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="navbar-end hidden lg:flex">
+      <a 
+        routerLink="/login" 
+        routerLinkActive="btn-active"
+        class="btn btn-primary"
+      >
+        Login
+      </a>
+    </div>
+  </div>
+
+  <div class="collapse-content lg:hidden z-10 relative">
+
+    <ul class="menu rounded-box bg-base-200 p-2 font-medium shadow-lg">
+
+      <li>
+        <a
+          routerLink="/"
+          routerLinkActive="menu-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/programadores"
+          routerLinkActive="menu-active"
+        >
+          Programadores
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/proyectos"
+          routerLinkActive="menu-active"
+        >
+          Proyectos
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/solicitudes"
+          routerLinkActive="menu-active"
+        >
+          Solicitudes
+        </a>
+      </li>
+
+      <li class="mt-2 border-t border-base-300 pt-2">
+        <a
+          routerLink="/login"
+          routerLinkActive="menu-active"
+          class="font-bold text-primary"
+        >
+          Login
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</header>
