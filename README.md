@@ -1,59 +1,29 @@
-# ProyectoAngular
+# DevPortfolio - Proyecto Integrador 
+Portafolio profesional desarrollado como proyecto integrador para la materia de **Programación de Plataformas Web** en la **Universidad Politécnica Salesiana**. 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
+Este proyecto demuestra la construcción de una aplicación web moderna y escalable (SPA), combinando interfaces de usuario de alto rendimiento con una arquitectura de componentes sólida y optimizada.
 
-## Development server
+## 👥 El Equipo (Technical Architects)
 
-To start a local development server, run:
+* **John Tigre** - Back-End Specialist
+  *Especializado en lenguajes robustos del lado del servidor, construcción de APIs seguras, gestión de bases de datos y arquitectura de sistemas.*
+* **Mateo Paez** - Front-End & Network Architect
+  *Especializado en frameworks modernos (Angular, React) transformando requerimientos técnicos en interfaces responsivas, optimizadas y "pixel-perfect".*
 
-```bash
-ng serve
-```
+## 🛠️ Stack Tecnológico
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+El proyecto está construido bajo los estándares más recientes de desarrollo frontend:
 
-## Code scaffolding
+* **Framework Core:** [Angular](https://angular.dev/) 
+  * Implementación estricta de **Standalone Components**.
+  * Reactividad moderna utilizando **Signals**.
+  * Optimización de rendimiento con `ChangeDetectionStrategy.OnPush`.
+* **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/) nativo.
+* **Componentes UI:** [DaisyUI](https://daisyui.com/) para estructuras base (navbar, menús colapsables).
+* **Iconografía:** Google Material Symbols Outlined.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ✨ Características Principales
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* **Arquitectura SPA (Single Page Application):** Navegación fluida y estructurada mediante `router-outlet` sin recargar el navegador.
+* **Navegación Dinámica Reactiva:** Menú lateral inteligente que detecta la posición del scroll mediante decoradores `@HostListener` y actualiza la clase activa de la interfaz en tiempo real utilizando Signals, evitando la manipulación directa del DOM.
+* **Diseño Responsivo Mobile-First:** El layout se adapta dinámicamente, pasando de un menú inferior colapsable en dispositivos móviles a un *sidebar* lateral fijo en pantallas de escritorio.
