@@ -71,14 +71,16 @@
                 We are a duo of technical architects specializing in scalable web applications, combining high-performance front-end experiences with resilient backend logic.
             </p>
             
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-                <div class="bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full">
-                    <div class="absolute top-0 right-0 w-40 h-40 bg-brand-50 rounded-bl-full -z-10"></div>
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 cursor-pointer">
+                
+                <!-- Card de Mateo -->
+                <a routerLink="/programador/mateo" class="block bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-brand-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-brand-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
                     <div>
                         <div class="flex items-center gap-6 mb-8">
                             <img alt="Mateo Paez" class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover shrink-0" src="https://cdn.nba.com/manage/2018/09/lebron-iso-akron-school.jpg"/>
                             <div>
-                                <h3 class="text-3xl font-bold text-slate-900 mb-1">Mateo Paez</h3>
+                                <h3 class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Mateo Paez</h3>
                                 <p class="text-sm font-bold text-brand-600 uppercase tracking-wider">Front-End & Network Architect</p>
                             </div>
                         </div>
@@ -86,15 +88,16 @@
                             Specializing in modern frameworks like React, Angular, and Ionic. Mateo transforms complex technical requirements into responsive, pixel-perfect interfaces utilizing Tailwind CSS, while implementing advanced networking and database structures.
                         </p>
                     </div>
-                </div>
+                </a>
                 
-                <div class="bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full">
-                    <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-50 rounded-bl-full -z-10"></div>
+                <!-- Card de John -->
+                <a routerLink="/programador/john" class="block bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
                     <div>
                         <div class="flex items-center gap-6 mb-8">
                             <img alt="John Tiger" class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover shrink-0" src="https://i.pinimg.com/236x/29/af/15/29af15e8f552fa65477e3801b297e3d1.jpg"/>
                             <div>
-                                <h3 class="text-3xl font-bold text-slate-900 mb-1">John Tiger</h3>
+                                <h3 class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-indigo-600 transition-colors">John Tiger</h3>
                                 <p class="text-sm font-bold text-brand-600 uppercase tracking-wider">Back-End Specialist</p>
                             </div>
                         </div>
@@ -102,7 +105,7 @@
                             A bridge between design and engineering. John leverages robust server-side languages and modern web frameworks to build secure APIs, manage distributed systems, and ensure seamless data flow across platforms.
                         </p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
