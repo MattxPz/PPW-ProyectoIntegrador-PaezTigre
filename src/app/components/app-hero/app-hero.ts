@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, HostListener, signal } from '@angular/core';
+import { RouterLink } from '@angular/router'; 
 
 @Component({
   selector: 'app-hero',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './app-hero.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
