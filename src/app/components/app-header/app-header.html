@@ -14,7 +14,6 @@
   <div class="collapse-title navbar px-4">
 
     <div class="navbar-start">
-
       <label
         for="navbar-toggle"
         class="btn btn-ghost lg:hidden"
@@ -44,9 +43,7 @@
     </div>
 
     <div class="navbar-center hidden lg:flex">
-
       <ul class="menu menu-horizontal px-1 font-medium">
-
         <li>
           <a
             routerLink="/"
@@ -56,7 +53,6 @@
             Home
           </a>
         </li>
-
         <li>
           <a
             routerLink="/proyectos"
@@ -65,7 +61,6 @@
             Proyectos
           </a>
         </li>
-
         <li>
           <a
             routerLink="/solicitudes"
@@ -74,25 +69,27 @@
             Solicitudes
           </a>
         </li>
-
       </ul>
     </div>
 
-    <div class="navbar-end hidden lg:flex">
-      <a 
-        routerLink="/login" 
-        routerLinkActive="btn-active"
-        class="btn btn-primary"
-      >
-        Login
-      </a>
+    <div class="navbar-end hidden lg:flex items-center gap-4">
+      @if (authService.currentUser$ | async; as user) {
+        <span class="text-sm font-medium">{{ user.email }}</span>
+        <button class="btn btn-ghost btn-sm text-error" (click)="logout()">Salir</button>
+      } @else {
+        <a 
+          routerLink="/login" 
+          routerLinkActive="btn-active"
+          class="btn btn-primary"
+        >
+          Cuenta
+        </a>
+      }
     </div>
   </div>
 
   <div class="collapse-content lg:hidden z-10 relative">
-
     <ul class="menu rounded-box bg-base-200 p-2 font-medium shadow-lg">
-
       <li>
         <a
           routerLink="/"
@@ -102,7 +99,6 @@
           Home
         </a>
       </li>
-
       <li>
         <a
           routerLink="/proyectos"
@@ -111,7 +107,6 @@
           Proyectos
         </a>
       </li>
-
       <li>
         <a
           routerLink="/solicitudes"
@@ -122,15 +117,19 @@
       </li>
 
       <li class="mt-2 border-t border-base-300 pt-2">
-        <a
-          routerLink="/login"
-          routerLinkActive="menu-active"
-          class="font-bold text-primary"
-        >
-          Login
-        </a>
+        @if (authService.currentUser$ | async; as user) {
+          <span class="font-bold text-base-content/70 px-4">{{ user.email }}</span>
+          <a (click)="logout()" class="font-bold text-error mt-1">Salir</a>
+        } @else {
+          <a
+            routerLink="/login"
+            routerLinkActive="menu-active"
+            class="font-bold text-primary"
+          >
+            Cuenta
+          </a>
+        }
       </li>
-
     </ul>
   </div>
 </header>
