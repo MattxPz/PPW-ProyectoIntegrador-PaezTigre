@@ -7,4 +7,3 @@ export const routes: Routes = [
     {path: 'programador/:id', component: AppProfile},
     {path: '**', redirectTo: ''},
 ];
-    

@@ -20,11 +20,11 @@
             <div class="shrink-0 relative">
                 <div class="absolute inset-0 bg-brand-100 rounded-full scale-110 -z-10 animate-pulse"></div>
                 <img [src]="currentProfile().image" [alt]="currentProfile().name" 
-                        class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-full border-8 border-white shadow-xl">
+                     class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-full border-8 border-white shadow-xl">
             </div>
         </section>
 
-       <section #reveal>
+        <section #reveal>
             <div class="flex items-center gap-4 mb-10">
                 <span class="material-symbols-outlined text-4xl text-brand-600">code_blocks</span>
                 <h2 class="text-3xl font-bold text-slate-900">Habilidades Técnicas</h2>
@@ -40,9 +40,7 @@
                 <div class="p-8 grid grid-cols-2 md:grid-cols-3 gap-6">
                     @for (skill of currentProfile().skills; track skill.name) {
                         <div class="flex flex-col items-center justify-center p-8 bg-slate-800/50 rounded-xl border border-slate-700/50 hover:bg-slate-800 hover:border-brand-500 transition-colors group">
-                            
                             <i [class]="skill.icon + ' text-5xl mb-4 group-hover:scale-110 transition-transform'"></i>
-                            
                             <span class="text-slate-300 font-medium font-mono text-sm">{{ skill.name }}</span>
                         </div>
                     }
