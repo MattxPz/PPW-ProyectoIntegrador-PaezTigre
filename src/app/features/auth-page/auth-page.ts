@@ -3,8 +3,6 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../components/services/auth.service';
 
-
-
 @Component({
   selector: 'app-auth-page',
   standalone: true,
@@ -48,7 +46,7 @@ export class AuthPage {
         this.router.navigate(['/']);
       },
       error: (err: any) => {
-        console.error('Error de Firebase:', err); // Revisa la consola del navegador
+        console.error('Error de Firebase:', err);
         
         let msg = 'Ocurrió un error inesperado.';
         
