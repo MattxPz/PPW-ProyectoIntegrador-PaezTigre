@@ -2,7 +2,8 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AppFooter } from './components/app-footer/app-footer';
 import { AppHeader } from './components/app-header/app-header';
-
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, AppHeader, AppFooter],
@@ -11,4 +12,5 @@ import { AppHeader } from './components/app-header/app-header';
 })
 export class App {
   protected readonly title = signal('proyecto-angular');
+  router = inject(Router);
 }

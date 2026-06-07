@@ -4,7 +4,7 @@ import { TitleCasePipe } from '@angular/common';
 
 @Component({
     selector: 'app-profile',
-    imports: [RouterLink, TitleCasePipe],
+    imports: [RouterLink],
     templateUrl: './app-profile.html'
 })
 export class AppProfile implements AfterViewInit {
