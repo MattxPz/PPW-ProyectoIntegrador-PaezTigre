@@ -1,0 +1,117 @@
+<section class="min-h-screen bg-slate-50 px-6 py-20 md:px-12 lg:px-16" id="requests">
+    <div class="w-full max-w-7xl mx-auto">
+        
+        <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+                <p class="text-sm font-bold text-blue-600 uppercase tracking-widest mb-2">
+                    @if (userRole() === 'admin') { Workspace } @else { History }
+                </p>
+                <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                    Project <br class="hidden md:block">
+                    <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-500">Requests.</span>
+                </h1>
+                <p class="text-lg text-slate-600 max-w-2xl mt-6 leading-relaxed">
+                    @if (userRole() === 'admin') {
+                        Manage incoming proposals and technical architecture inquiries.
+                    } @else if (userRole() === 'cliente') {
+                        Review the status and responses of your submitted project briefs.
+                    }
+                </p>
+            </div>
+            
+            @if (userRole() === 'admin') {
+                <div class="px-6 py-3 bg-slate-900 text-white text-sm font-bold rounded-full shadow-lg border border-slate-700 flex items-center gap-2 shrink-0">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Admin Mode Active
+                </div>
+            }
+        </div>
+
+        @if (isLoading()) {
+            <div class="flex justify-center items-center py-32">
+                <svg class="animate-spin h-12 w-12 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </div>
+        } @else if (solicitudes().length === 0) {
+            <div class="w-full bg-white p-16 rounded-[2.5rem] border border-slate-100 shadow-sm text-center flex flex-col items-center">
+                <div class="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-300 mb-6 border border-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                    </svg>
+                </div>
+                <h3 class="text-3xl font-bold text-slate-900 mb-4">No Requests Found</h3>
+                <p class="text-slate-600 text-lg max-w-md">There are currently no project briefs or technical inquiries associated with this account.</p>
+            </div>
+        } @else {
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                @for (req of solicitudes(); track req.id) {
+                    <article class="bg-white p-8 lg:p-10 rounded-4x1 border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-300 relative overflow-hidden flex flex-col h-full group">
+                        
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-slate-50 rounded-bl-full -z-10 group-hover:scale-110 group-hover:bg-blue-50 transition-all duration-500"></div>
+
+                        <div class="flex flex-wrap justify-between items-start gap-4 mb-8">
+                            <div>
+                                <h3 class="text-3xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{{ req.nombreSolicitante }}</h3>
+                                <p class="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" /><path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" /></svg>
+                                    {{ req.correoSolicitante }}
+                                </p>
+                            </div>
+                            <span class="px-5 py-2 text-sm font-bold rounded-xl shadow-sm border"
+                                  [class.bg-amber-50]="req.estado === 'Pendiente'"
+                                  [class.text-amber-700]="req.estado === 'Pendiente'"
+                                  [class.border-amber-200]="req.estado === 'Pendiente'"
+                                  [class.bg-emerald-50]="req.estado === 'Respondida'"
+                                  [class.text-emerald-700]="req.estado === 'Respondida'"
+                                  [class.border-emerald-200]="req.estado === 'Respondida'">
+                                {{ req.estado }}
+                            </span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="px-4 py-2 bg-slate-50 border border-slate-100 text-slate-700 text-sm font-semibold rounded-xl flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-blue-500"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" /></svg>
+                                {{ req.fechaCreacion | date:'mediumDate' }}
+                            </span>
+                            <span class="px-4 py-2 bg-slate-50 border border-slate-100 text-slate-700 text-sm font-semibold rounded-xl flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-indigo-500"><path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" /></svg>
+                                Routing: {{ req.idProgramador | titlecase }}
+                            </span>
+                        </div>
+
+                        <div class="bg-slate-50 p-8 rounded-2xl mb-8 grow border border-slate-100 relative">
+                            <svg class="absolute top-6 left-6 w-8 h-8 text-slate-200" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
+                            <p class="text-slate-600 text-lg leading-relaxed whitespace-pre-wrap relative z-10 pl-10">{{ req.ideaProyecto }}</p>
+                        </div>
+
+                        @if (userRole() === 'cliente' && req.observacion) {
+                            <div class="bg-indigo-50/50 border border-indigo-100 p-6 rounded-2xl mt-auto">
+                                <p class="text-sm font-bold text-indigo-600 uppercase tracking-widest mb-2">Team Feedback</p>
+                                <p class="text-slate-700 text-lg">{{ req.observacion }}</p>
+                            </div>
+                        }
+
+                        @if (userRole() === 'admin') {
+                            <div class="mt-auto pt-8 border-t border-slate-100">
+                                <label class="block text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Request Management</label>
+                                <textarea #obsInput [value]="req.observacion || ''" class="w-full bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:ring-blue-500 focus:border-blue-500 p-5 text-lg outline-none transition-all resize-none mb-6 shadow-inner" placeholder="Draft a response for the client..." rows="3"></textarea>
+
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                    <select #estadoInput [value]="req.estado" class="bg-white border border-slate-200 rounded-xl text-slate-700 focus:ring-blue-500 focus:border-blue-500 p-4 text-lg font-medium outline-none transition-all shadow-sm grow appearance-none cursor-pointer">
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Respondida">Respondida</option>
+                                    </select>
+                                    <button (click)="actualizarSolicitud(req.id, obsInput.value, estadoInput.value)" class="px-8 py-4 bg-slate-900 text-white text-lg font-bold rounded-xl hover:bg-blue-600 active:scale-[0.98] transition-all shadow-lg shadow-slate-900/20 whitespace-nowrap">
+                                        Update Status
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </article>
+                }
+            </div>
+        }
+    </div>
+</section>
