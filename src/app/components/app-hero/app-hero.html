@@ -1,315 +1,318 @@
-<div class="md:hidden bg-white border-b border-slate-200 fixed top-0 w-full z-50 flex justify-between items-center p-4 shadow-sm">
+<div class="md:hidden bg-white border-b border-slate-200 fixed top-[68px] w-full z-40 flex justify-between items-center p-4 shadow-sm">
     <h1 class="text-xl font-bold text-slate-900">DevPortfolio</h1>
     <button id="mobile-menu-btn" class="text-slate-600">
         <span class="material-symbols-outlined">menu</span>
     </button>
 </div>
 
-<aside class="fixed left-0 h-screen w-64 border-r border-slate-200 bg-white z-40 hidden md:flex flex-col p-8 shadow-sm">
-    <div class="mb-12">
-        <h1 class="text-2xl font-bold text-slate-900 mb-1">DevPortfolio</h1>
-        <p class="text-sm font-medium text-brand-600">Technical Architects</p>
-    </div>
-    
-    <nav class="flex flex-col gap-2 grow">
-        <a href="#about"
-           class="group flex items-center gap-3 p-3 rounded-xl transition-all"
-           [class]="activeSection() === 'about' 
-              ? 'bg-white shadow-sm text-slate-900 font-bold' 
-              : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium'">
-            <span class="material-symbols-outlined">group</span>
-            <span>The Team</span>
-        </a>
-        <a href="#skills"
-           class="group flex items-center gap-3 p-3 rounded-xl transition-all"
-           [class]="activeSection() === 'skills' 
-              ? 'bg-white shadow-sm text-slate-900 font-bold' 
-              : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium'">
-            <span class="material-symbols-outlined">bolt</span>
-            <span>Expertise</span>
-        </a>
-        <a href="#projects"
-           class="group flex items-center gap-3 p-3 rounded-xl transition-all"
-           [class]="activeSection() === 'projects' 
-              ? 'bg-white shadow-sm text-slate-900 font-bold' 
-              : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium'">
-            <span class="material-symbols-outlined">code</span>
-            <span>Projects</span>
-        </a>
-        <a href="#contact"
-           class="group flex items-center gap-3 p-3 rounded-xl transition-all"
-           [class]="activeSection() === 'contact' 
-              ? 'bg-white shadow-sm text-slate-900 font-bold' 
-              : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium'">
-            <span class="material-symbols-outlined">mail</span>
-            <span>Contact</span>
-        </a>
-    </nav>
+<div class="flex items-start w-full relative">
 
-    <div class="mt-auto pt-8 border-t border-slate-100">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                <span class="material-symbols-outlined text-sm">wifi</span>
-            </div>
-            <div>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Status</p>
-                <p class="text-sm font-medium text-green-600">Available for work</p>
-            </div>
+    <aside class="sticky top-[68px] h-[calc(100vh-68px)] w-64 shrink-0 border-r border-slate-200 bg-white z-30 hidden md:flex flex-col p-8 shadow-sm overflow-y-auto">
+        <div class="mb-12">
+            <h1 class="text-2xl font-bold text-slate-900 mb-1">DevPortfolio</h1>
+            <p class="text-sm font-medium text-brand-600">Arquitectos Técnicos</p>
         </div>
-    </div>
-</aside>
-
-<main class="md:ml-64 min-h-screen pt-16 md:pt-0">
-    
-    <section class="min-h-screen flex flex-col justify-center px-6 py-20 md:px-12 lg:px-16" id="about">
-        <div class="w-full max-w-7xl mx-auto">
-            <h1 class="text-5xl md:text-6xl lg:text-[80px] font-extrabold tracking-tight text-slate-900 mb-8 leading-tight">
-                Crafting robust <br>
-                <span class="text-transparent bg-clip-text bg-linear-to-r from-brand-600 to-indigo-500">digital architectures.</span>
-            </h1>
-            <p class="text-lg md:text-2xl text-slate-600 max-w-3xl mb-16 leading-relaxed">
-                We are a duo of technical architects specializing in scalable web applications, combining high-performance front-end experiences with resilient backend logic.
-            </p>
-            
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 cursor-pointer">
-                
-                <!-- Card de Mateo -->
-                <a routerLink="/programador/mateo" class=" bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-brand-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
-                    <div class="absolute top-0 right-0 w-40 h-40 bg-brand-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
-                    <div>
-                        <div class="flex items-center gap-6 mb-8">
-                            <img alt="Mateo Paez" class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover shrink-0" src="https://cdn.nba.com/manage/2018/09/lebron-iso-akron-school.jpg"/>
-                            <div>
-                                <h3 class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Mateo Paez</h3>
-                                <p class="text-sm font-bold text-brand-600 uppercase tracking-wider">Front-End & Network Architect</p>
-                            </div>
-                        </div>
-                        <p class="text-slate-600 text-lg leading-relaxed">
-                            Specializing in modern frameworks like React, Angular, and Ionic. Mateo transforms complex technical requirements into responsive, pixel-perfect interfaces utilizing Tailwind CSS, while implementing advanced networking and database structures.
-                        </p>
-                    </div>
-                </a>
-                
-                <!-- Card de John -->
-                <a routerLink="/programador/john" class="bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
-                    <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
-                    <div>
-                        <div class="flex items-center gap-6 mb-8">
-                            <img alt="John Tiger" class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover shrink-0" src="https://i.pinimg.com/236x/29/af/15/29af15e8f552fa65477e3801b297e3d1.jpg"/>
-                            <div>
-                                <h3 class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-indigo-600 transition-colors">John Tiger</h3>
-                                <p class="text-sm font-bold text-brand-600 uppercase tracking-wider">Back-End Specialist</p>
-                            </div>
-                        </div>
-                        <p class="text-slate-600 text-lg leading-relaxed">
-                            A bridge between design and engineering. John leverages robust server-side languages and modern web frameworks to build secure APIs, manage distributed systems, and ensure seamless data flow across platforms.
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-white px-6 py-20 md:px-12 lg:px-16 border-y border-slate-100" id="skills">
-        <div class="w-full max-w-7xl mx-auto">
-            <div class="mb-16">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">Technical Expertise</h2>
-                <div class="h-1.5 w-16 bg-brand-500 rounded-full"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-200 transition-colors">
-                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-600 mb-8">
-                        <span class="material-symbols-outlined text-3xl">web</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Frontend</h4>
-                    <ul class="space-y-4 text-slate-600 text-lg">
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> React & Next.js</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Angular & Ionic</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Tailwind CSS</li>
-                    </ul>
-                </div>
-                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-200 transition-colors">
-                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-600 mb-8">
-                        <span class="material-symbols-outlined text-3xl">dns</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Backend & Cloud</h4>
-                    <ul class="space-y-4 text-slate-600 text-lg">
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Node.js / Express</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Java Spring</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> AWS & Vercel</li>
-                    </ul>
-                </div>
-                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-200 transition-colors">
-                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-600 mb-8">
-                        <span class="material-symbols-outlined text-3xl">database</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Database</h4>
-                    <ul class="space-y-4 text-slate-600 text-lg">
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Oracle (PL/SQL)</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> PostgreSQL</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Redis</li>
-                    </ul>
-                </div>
-                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-200 transition-colors">
-                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-600 mb-8">
-                        <span class="material-symbols-outlined text-3xl">router</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Systems & Tools</h4>
-                    <ul class="space-y-4 text-slate-600 text-lg">
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Cisco Packet Tracer</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> IPv6 & VLANs</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Docker & Git</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="px-6 py-20 md:px-12 lg:px-16" id="projects">
-        <div class="w-full max-w-7xl mx-auto">
-            <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <p class="text-sm font-bold text-brand-600 uppercase tracking-widest mb-2">Selected Work</p>
-                    <h2 class="text-4xl font-bold text-slate-900">Project Archive</h2>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-                <article class="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col">
-                    <div class="h-80 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-brand-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                        <img alt="Project 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmLF6vP0BdAS7j1zzNCzleNY5B9aPRDsIWxmqXHaJTUD-tUmatKJI0JhA4Cu6lepfAvN9YKQvyWZGdHQj5NI84_tpnCIzVgUHG55EWppYvIzH92SNjif_yOT-0Ck0tT5YO_6qShZTf8NXr8UYb7KdOJ-PEbfp_fVGnU55bB3mjDQHdBTp5cPdrUyqt0i-WXG8zW9RkzAtncfkiAFZvEcdt0kX8mmiYp6sTRiKDpbFKcwUaxIp120w5rFPiKoIi_we85FY2mOahBuI"/>
-                        <div class="absolute top-6 left-6 z-20">
-                            <span class="px-4 py-2 bg-white/90 backdrop-blur-sm text-slate-900 text-xs font-bold rounded-full shadow-sm">Enterprise</span>
-                        </div>
-                    </div>
-                    <div class="p-10 flex flex-col grow">
-                        <h3 class="text-3xl font-bold text-slate-900 mb-4">NeoCore Infrastructure</h3>
-                        <p class="text-slate-600 text-lg mb-8 grow">A robust distributed system utilizing advanced networking architectures and database management to handle high-throughput transactions with minimal latency.</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">Java</span>
-                            <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">PostgreSQL</span>
-                            <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">Networking</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col">
-                    <div class="h-80 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-brand-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                        <img alt="Project 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACXpTfnPBbQ6RMWYU1E1fkcpvtJkmpwZd2IBzdG9No9RefNTR_g15DzrRRyqtf-RzyU-PL8h8oykE8sWuFyjy3FydHgbbEOXLMf8ZX6GiVymZsnbrIGk5sXoBIr4e-4ZOFqlybqJ38mdQQf8sradKyvFYO_6KXvkrzSDWam6uhBPzLISnQP3oR6KFmr24twRjYVI9c5BpSu6b33UzYqZGU9CPbCtbCgXN0CE4ZhmgKzLrZgfY4m6rZEiVgxiRvBFCQQ56GLtw1hks"/>
-                        <div class="absolute top-6 left-6 z-20">
-                            <span class="px-4 py-2 bg-white/90 backdrop-blur-sm text-slate-900 text-xs font-bold rounded-full shadow-sm">SaaS UI</span>
-                        </div>
-                    </div>
-                    <div class="p-10 flex flex-col grow">
-                        <h3 class="text-3xl font-bold text-slate-900 mb-4">Lattice Dashboard</h3>
-                        <p class="text-slate-600 text-lg mb-8 grow">A React-based data visualization platform ensuring pixel-perfect adaptability utilizing Tailwind CSS. Includes real-time data synchronization.</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">React</span>
-                            <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">Tailwind</span>
-                            <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">WebSockets</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="px-6 py-20 md:px-12 lg:px-16" id="contact">
-    <div class="w-full max-w-7xl mx-auto bg-slate-900 rounded-[2.5rem] p-8 md:p-12 lg:p-20 text-white overflow-hidden relative shadow-2xl">
-        <div class="absolute -top-32 -right-32 w-96 h-96 bg-blue-600/30 blur-3xl rounded-full pointer-events-none"></div>
-        <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-500/20 blur-3xl rounded-full pointer-events-none"></div>
         
-        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <div>
-                <h2 class="text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">Let's build something scaleable.</h2>
-                <p class="text-slate-300 text-xl mb-14 max-w-lg leading-relaxed">
-                    Ready to discuss your next technical architecture or full-stack project? We’re available for consulting and dedicated partnerships.
+        <nav class="flex flex-col gap-2 grow">
+            <a href="#about"
+               class="group flex items-center gap-3 p-3 rounded-xl transition-all"
+               [class]="activeSection() === 'about' 
+                  ? 'bg-white shadow-sm text-slate-900 font-bold' 
+                  : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium'">
+                <span class="material-symbols-outlined">group</span>
+                <span>El Equipo</span>
+            </a>
+            <a href="#skills"
+               class="group flex items-center gap-3 p-3 rounded-xl transition-all"
+               [class]="activeSection() === 'skills' 
+                  ? 'bg-white shadow-sm text-slate-900 font-bold' 
+                  : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium'">
+                <span class="material-symbols-outlined">bolt</span>
+                <span>Habilidades</span>
+            </a>
+            <a href="#projects"
+               class="group flex items-center gap-3 p-3 rounded-xl transition-all"
+               [class]="activeSection() === 'projects' 
+                  ? 'bg-white shadow-sm text-slate-900 font-bold' 
+                  : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium'">
+                <span class="material-symbols-outlined">code</span>
+                <span>Proyectos</span>
+            </a>
+            <a href="#contact"
+               class="group flex items-center gap-3 p-3 rounded-xl transition-all"
+               [class]="activeSection() === 'contact' 
+                  ? 'bg-white shadow-sm text-slate-900 font-bold' 
+                  : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium'">
+                <span class="material-symbols-outlined">mail</span>
+                <span>Contacto</span>
+            </a>
+        </nav>
+
+        <div class="mt-auto pt-8 border-t border-slate-100">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0">
+                    <span class="material-symbols-outlined text-sm">wifi</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Estado</p>
+                    <p class="text-sm font-medium text-green-600 leading-tight">Disponible para trabajar</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 w-full min-h-screen pt-16 md:pt-0">
+        
+        <section class="min-h-screen flex flex-col justify-center px-6 py-20 md:px-12 lg:px-16" id="about">
+            <div class="w-full max-w-7xl mx-auto">
+                <h1 class="text-5xl md:text-6xl lg:text-[80px] font-extrabold tracking-tight text-slate-900 mb-8 leading-tight">
+                    Creando arquitecturas <br>
+                    <span class="text-transparent bg-clip-text bg-linear-to-r from-brand-600 to-indigo-500">digitales robustas.</span>
+                </h1>
+                <p class="text-lg md:text-2xl text-slate-600 max-w-3xl mb-16 leading-relaxed">
+                    Somos un dúo de arquitectos técnicos especializados en aplicaciones web escalables, combinando experiencias front-end de alto rendimiento con lógica backend resiliente.
                 </p>
                 
-                <div class="space-y-10">
-                    <a class="flex items-center gap-6 group" href="mailto:mpaezg2@est.ups.edu.ec">
-                        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-blue-500 transition-colors backdrop-blur-sm border border-white/5">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                            </svg>
-                        </div>
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12 cursor-pointer">
+                    
+                    <!-- Card de Mateo -->
+                    <a routerLink="/programador/mateo" class="bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-brand-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-brand-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
                         <div>
-                            <p class="text-sm font-medium text-slate-400 mb-1 uppercase tracking-wide">Email Us</p>
-                            <p class="text-2xl font-semibold text-white">mpaezg2@est.ups.edu.ec</p>
-                            <p class="text-2xl font-semibold text-white">jtigrec4@est.ups.edu.ec</p>
+                            <div class="flex items-center gap-6 mb-8">
+                                <img alt="Mateo Páez" class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover shrink-0" src="/FotoPerfil_Mateo.jpeg"/>
+                                <div>
+                                    <h3 class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Mateo Páez</h3>
+                                    <p class="text-sm font-bold text-brand-600 uppercase tracking-wider">Arquitecto Front-End y Redes</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 text-lg leading-relaxed">
+                                Especializado en frameworks modernos como React y Angular. Mateo transforma requerimientos técnicos complejos en interfaces responsivas con Tailwind CSS, mientras implementa estructuras de bases de datos y redes avanzadas.
+                            </p>
                         </div>
                     </a>
-                    <div class="flex items-center gap-6 group">
-                        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/5">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                            </svg>
-                        </div>
+
+                    <!-- Card de John Tigre -->
+                    <a routerLink="/programador/john" class="bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
                         <div>
-                            <p class="text-sm font-medium text-slate-400 mb-1 uppercase tracking-wide">Location</p>
-                            <p class="text-2xl font-semibold text-white">Cuenca, Ecuador / Remote</p>
+                            <div class="flex items-center gap-6 mb-8">
+                                <img alt="John Tigre" class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover shrink-0" src="/FotoPerfil_John.jpeg"/>
+                                <div>
+                                    <h3 class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-indigo-600 transition-colors">John Tigre</h3>
+                                    <p class="text-sm font-bold text-brand-600 uppercase tracking-wider">Especialista Back-End</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 text-lg leading-relaxed">
+                                Un puente entre el diseño y la ingeniería. John utiliza lenguajes del lado del servidor y frameworks modernos para construir APIs seguras, administrar sistemas distribuidos y asegurar un flujo de datos continuo.
+                            </p>
                         </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white px-6 py-20 md:px-12 lg:px-16 border-y border-slate-100" id="skills">
+            <div class="w-full max-w-7xl mx-auto">
+                <div class="mb-16">
+                    <h2 class="text-4xl font-bold text-slate-900 mb-4">Experiencia Técnica</h2>
+                    <div class="h-1.5 w-16 bg-brand-500 rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-200 transition-colors">
+                        <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-600 mb-8">
+                            <span class="material-symbols-outlined text-3xl">web</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-4">Frontend</h4>
+                        <ul class="space-y-4 text-slate-600 text-lg">
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> React & Next.js</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Angular & Ionic</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Tailwind CSS</li>
+                        </ul>
+                    </div>
+                    <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-200 transition-colors">
+                        <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-600 mb-8">
+                            <span class="material-symbols-outlined text-3xl">dns</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-4">Backend y Nube</h4>
+                        <ul class="space-y-4 text-slate-600 text-lg">
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Node.js / Express</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Java Spring</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> AWS & Vercel</li>
+                        </ul>
+                    </div>
+                    <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-200 transition-colors">
+                        <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-600 mb-8">
+                            <span class="material-symbols-outlined text-3xl">database</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-4">Bases de Datos</h4>
+                        <ul class="space-y-4 text-slate-600 text-lg">
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Oracle (PL/SQL)</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> PostgreSQL</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Firebase</li>
+                        </ul>
+                    </div>
+                    <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-200 transition-colors">
+                        <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-600 mb-8">
+                            <span class="material-symbols-outlined text-3xl">router</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-4">Sistemas y Herramientas</h4>
+                        <ul class="space-y-4 text-slate-600 text-lg">
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Cisco Packet Tracer</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Git / GitHub</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Docker</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            
-            <div>
-                @if (currentUser()) {
-                    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="bg-white/5 p-10 rounded-3xl backdrop-blur-md border border-white/10 shadow-xl space-y-8">
-                        <div class="grid grid-cols-1 gap-8">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-3 uppercase tracking-wide">Name</label>
-                                <input formControlName="nombre" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder:text-slate-500 focus:ring-blue-500 focus:border-blue-500 p-4 text-lg outline-none transition-all" placeholder="John Doe" type="text"/>
+        </section>
+
+        <section class="px-6 py-20 md:px-12 lg:px-16" id="projects">
+            <div class="w-full max-w-7xl mx-auto">
+                <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <p class="text-sm font-bold text-brand-600 uppercase tracking-widest mb-2">Trabajo Destacado</p>
+                        <h2 class="text-4xl font-bold text-slate-900">Archivo de Proyectos</h2>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+                    <article class="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col">
+                        <div class="h-80 overflow-hidden relative bg-slate-200 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-brand-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                            <span class="material-symbols-outlined text-6xl text-slate-400">code_blocks</span>
+                            <div class="absolute top-6 left-6 z-20">
+                                <span class="px-4 py-2 bg-white/90 backdrop-blur-sm text-slate-900 text-xs font-bold rounded-full shadow-sm">Empresarial</span>
                             </div>
                         </div>
+                        <div class="p-10 flex flex-col grow">
+                            <h3 class="text-3xl font-bold text-slate-900 mb-4">Infraestructura NeoCore</h3>
+                            <p class="text-slate-600 text-lg mb-8 grow">Un sistema distribuido robusto que utiliza arquitecturas de red avanzadas y gestión de bases de datos para procesar transacciones de alto rendimiento con latencia mínima.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">Node.js</span>
+                                <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">PostgreSQL</span>
+                                <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">Networking</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col">
+                        <div class="h-80 overflow-hidden relative bg-slate-200 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-brand-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                            <span class="material-symbols-outlined text-6xl text-slate-400">dashboard</span>
+                            <div class="absolute top-6 left-6 z-20">
+                                <span class="px-4 py-2 bg-white/90 backdrop-blur-sm text-slate-900 text-xs font-bold rounded-full shadow-sm">Interfaz SaaS</span>
+                            </div>
+                        </div>
+                        <div class="p-10 flex flex-col grow">
+                            <h3 class="text-3xl font-bold text-slate-900 mb-4">Lattice Dashboard</h3>
+                            <p class="text-slate-600 text-lg mb-8 grow">Una plataforma de visualización de datos basada en React que garantiza adaptabilidad pixel-perfect con Tailwind CSS. Incluye sincronización en tiempo real.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">React</span>
+                                <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">Tailwind</span>
+                                <span class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-xl">Firebase</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-6 py-20 md:px-12 lg:px-16" id="contact">
+            <div class="w-full max-w-7xl mx-auto bg-slate-900 rounded-[2.5rem] p-8 md:p-12 lg:p-20 text-white overflow-hidden relative shadow-2xl">
+                <div class="absolute -top-32 -right-32 w-96 h-96 bg-blue-600/30 blur-3xl rounded-full pointer-events-none"></div>
+                <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-500/20 blur-3xl rounded-full pointer-events-none"></div>
+                
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                    <div>
+                        <h2 class="text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">Construyamos algo escalable.</h2>
+                        <p class="text-slate-300 text-xl mb-14 max-w-lg leading-relaxed">
+                            ¿Listo para discutir tu próxima arquitectura técnica o proyecto full-stack? Estamos disponibles para consultoría y colaboraciones dedicadas.
+                        </p>
                         
-                        <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-3 uppercase tracking-wide">Select Programmer</label>
-                            <select formControlName="programador" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl text-white focus:ring-blue-500 focus:border-blue-500 p-4 text-lg outline-none transition-all appearance-none cursor-pointer">
-                                <option value="ambos" class="bg-slate-800">General / Ambos</option>
-                                <option value="mateo" class="bg-slate-800">Mateo Páez</option>
-                                <option value="tigre" class="bg-slate-800">J. Tigre</option>
-                            </select>
+                        <div class="space-y-10">
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-blue-500 transition-colors backdrop-blur-sm border border-white/5 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-400 mb-1 uppercase tracking-wide">Contáctanos</p>
+                                    <p class="text-xl font-semibold text-white">mpaezg2@est.ups.edu.ec</p>
+                                    <p class="text-xl font-semibold text-white">jtigrec4@est.ups.edu.ec</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/5 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-400 mb-1 uppercase tracking-wide">Ubicación</p>
+                                    <p class="text-xl font-semibold text-white">Cuenca, Ecuador / Remoto</p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    
+                    <div>
+                        @if (currentUser()) {
+                            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="bg-white/5 p-10 rounded-3xl backdrop-blur-md border border-white/10 shadow-xl space-y-8">
+                                <div class="grid grid-cols-1 gap-8">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-300 mb-3 uppercase tracking-wide">Nombre</label>
+                                        <input formControlName="nombre" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder:text-slate-500 focus:ring-blue-500 focus:border-blue-500 p-4 text-lg outline-none transition-all" placeholder="Juan Pérez" type="text"/>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-300 mb-3 uppercase tracking-wide">Seleccionar Programador</label>
+                                    <select formControlName="programador" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl text-white focus:ring-blue-500 focus:border-blue-500 p-4 text-lg outline-none transition-all appearance-none cursor-pointer">
+                                        <option value="ambos" class="bg-slate-800">General / Ambos</option>
+                                        <option value="mateo" class="bg-slate-800">Mateo Páez</option>
+                                        <option value="tigre" class="bg-slate-800">John Tigre</option>
+                                    </select>
+                                </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-3 uppercase tracking-wide">Project Brief</label>
-                            <textarea formControlName="idea" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder:text-slate-500 focus:ring-blue-500 focus:border-blue-500 p-4 text-lg outline-none transition-all resize-none" placeholder="Describe your technical requirements..." rows="4"></textarea>
-                        </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-300 mb-3 uppercase tracking-wide">Idea del Proyecto</label>
+                                    <textarea formControlName="idea" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder:text-slate-500 focus:ring-blue-500 focus:border-blue-500 p-4 text-lg outline-none transition-all resize-none" placeholder="Describe los requerimientos técnicos..." rows="4"></textarea>
+                                </div>
 
-                        @if (successMsg()) {
-                            <div class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 p-4 rounded-xl text-center font-medium">
-                                {{ successMsg() }}
+                                @if (successMsg()) {
+                                    <div class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 p-4 rounded-xl text-center font-medium">
+                                        {{ successMsg() }}
+                                    </div>
+                                }
+
+                                <button [disabled]="contactForm.invalid || isLoading()" type="submit" class="w-full py-5 bg-blue-600 text-white text-lg font-bold rounded-xl hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] transition-all shadow-lg shadow-blue-500/25 flex justify-center items-center h-16">
+                                    @if (isLoading()) {
+                                        <span class="loading loading-spinner loading-md"></span>
+                                    } @else {
+                                        Enviar Mensaje
+                                    }
+                                </button>
+                            </form>
+                        } @else {
+                            <div class="bg-white/5 p-12 rounded-3xl backdrop-blur-md border border-white/10 shadow-xl text-center">
+                                <div class="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-blue-400">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white mb-4">Autenticación Requerida</h3>
+                                <p class="text-slate-300 mb-8 text-lg">Debes iniciar sesión para enviar una solicitud de proyecto.</p>
+                                <a routerLink="/login" class="inline-block px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/25">
+                                    Iniciar Sesión / Registrarse
+                                </a>
                             </div>
                         }
-
-                        <button [disabled]="contactForm.invalid || isLoading()" type="submit" class="w-full py-5 bg-blue-600 text-white text-lg font-bold rounded-xl hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] transition-all shadow-lg shadow-blue-500/25 flex justify-center items-center h-16">
-                            @if (isLoading()) {
-                                <span class="loading loading-spinner loading-md"></span>
-                            } @else {
-                                Initialize Contact
-                            }
-                        </button>
-                    </form>
-                } @else {
-                    <div class="bg-white/5 p-12 rounded-3xl backdrop-blur-md border border-white/10 shadow-xl text-center">
-                        <div class="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-blue-400">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Authentication Required</h3>
-                        <p class="text-slate-300 mb-8 text-lg">You must be logged in to send a project request.</p>
-                        <a routerLink="/login" class="inline-block px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/25">
-                            Sign In / Register
-                        </a>
                     </div>
-                }
+                </div>
             </div>
-        </div>
-    </div>
-</section>
-</main>
+        </section>
+    </main>
+</div>

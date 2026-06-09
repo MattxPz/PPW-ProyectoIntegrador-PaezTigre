@@ -1,6 +1,7 @@
-import { Component, inject, signal, computed, AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, inject, signal, AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
+import { StrapiService } from '../../services/strapi.service'; 
 
 @Component({
     selector: 'app-profile',
@@ -9,67 +10,52 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class AppProfile implements AfterViewInit {
     private route = inject(ActivatedRoute);
-    
+    private strapiService = inject(StrapiService); // Inyectamos la conexión a Strapi
+
     @ViewChildren('reveal') revealElements!: QueryList<ElementRef>;
 
     developerId = signal<string | null>(null);
 
-    profiles = {
-    mateo: {
-        name: 'Mateo Paez',
-        role: 'Front-End & Network Architect',
-        description: 'Especializado en el diseño y desarrollo de interfaces de usuario escalables y pixel-perfect con Angular y React, complementado con un fuerte conocimiento en infraestructuras de red y protocolos.',
-        image: 'https://cdn.nba.com/manage/2018/09/lebron-iso-akron-school.jpg',
-        skills: [
-        { name: 'Angular', icon: 'devicon-angular-plain colored' },
-        { name: 'React', icon: 'devicon-react-original colored' },
-        { name: 'Tailwind CSS', icon: 'devicon-tailwindcss-original colored' },
-        { name: 'Ionic', icon: 'devicon-ionic-original colored' },
-        { name: 'TypeScript', icon: 'devicon-typescript-plain colored' },
-        { name: 'Redes', icon: 'devicon-linux-plain' } // Icono representativo
-        ],
-        experience: [
-        { role: 'Desarrollador Frontend Jr', date: '2025 - Actualidad', company: 'TechSolutions', desc: 'Desarrollo de interfaces reactivas y consumo de APIs REST.' },
-        { role: 'Técnico de Redes', date: '2024 - 2025', company: 'UPS Labs', desc: 'Configuración de topologías de red y protocolos de enrutamiento.' }
-        ]
-    },
-    john: {
-        name: 'John Tigre',
-        role: 'Back-End Specialist & Database Admin',
-        description: 'Ingeniero enfocado en la lógica de servidor, creación de APIs robustas y modelado de bases de datos relacionales. Apasionado por la seguridad y la eficiencia en el manejo de datos.',
-        image: 'https://i.pinimg.com/236x/29/af/15/29af15e8f552fa65477e3801b297e3d1.jpg',
-        skills: [
-        { name: 'Node.js', icon: 'devicon-nodejs-plain-wordmark colored' },
-        { name: 'Java', icon: 'devicon-java-plain colored' },
-        { name: 'PostgreSQL', icon: 'devicon-postgresql-plain colored' },
-        { name: 'Oracle', icon: 'devicon-oracle-original colored' },
-        { name: 'Docker', icon: 'devicon-docker-plain colored' },
-        { name: 'Git', icon: 'devicon-git-plain colored' }
-        ],
-        experience: [
-        { role: 'Desarrollador Backend Jr', date: '2025 - Actualidad', company: 'DataCore', desc: 'Implementación de microservicios y optimización de consultas SQL.' },
-        { role: 'Administrador de BD', date: '2024 - 2025', company: 'UPS Proyectos', desc: 'Diseño de modelos entidad-relación y scripts DDL/DML.' }
-        ]
-    }
-    };
-
-    currentProfile = computed(() => {
-    const id = this.developerId();
-    return id === 'mateo' ? this.profiles.mateo : this.profiles.john;
-    });
+    currentProfile = signal<any>(null); 
 
     constructor() {
     this.route.paramMap.subscribe(params => {
-        this.developerId.set(params.get('id'));
-        setTimeout(() => this.initScrollAnimations(), 100);
+      const id = params.get('id'); 
+        this.developerId.set(id);
+        this.cargarDatosDesdeStrapi(id);
     });
     }
 
-    ngAfterViewInit() {
-    this.initScrollAnimations();
+    cargarDatosDesdeStrapi(slugBuscado: string | null) {
+    if (!slugBuscado) return;
+
+    this.strapiService.getProgramadores().subscribe({
+        next: (response) => {
+        // Strapi v5 devuelve el array de registros dentro de "data"
+        const todosLosProgramadores = response.data;
+        
+        // Filtramos para encontrar el que coincida con la URL (ej. slug == 'john')
+        const perfilEncontrado = todosLosProgramadores.find(
+            (programador: any) => programador.slug === slugBuscado
+        );
+
+        if (perfilEncontrado) {
+            this.currentProfile.set(perfilEncontrado);
+            
+            setTimeout(() => this.initScrollAnimations(), 100);
+        }
+        },
+        error: (error) => {
+        console.error('Error al conectar con Strapi:', error);
+        }
+    });
     }
 
-    initScrollAnimations() {
+ngAfterViewInit() {
+    this.initScrollAnimations();
+}
+
+initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
         if (entry.isIntersecting) {
