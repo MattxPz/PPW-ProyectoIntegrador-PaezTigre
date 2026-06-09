@@ -1,4 +1,4 @@
-<header class="max-lg:collapse bg-base-100 shadow-sm w-full z-50">
+<header class="max-lg:collapse bg-slate-900 text-white shadow-md w-full z-50 fixed top-0 left-0">
 
   <input
     id="navbar-toggle"
@@ -47,16 +47,16 @@
         <li>
           <a
             routerLink="/"
-            routerLinkActive="menu-active"
+            routerLinkActive="menu-active text-brand-400"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            Home
+            Inicio
           </a>
         </li>
         <li>
           <a
             routerLink="/projects"
-            routerLinkActive="menu-active"
+            routerLinkActive="menu-active text-brand-400"
           >
             Proyectos
           </a>
@@ -64,7 +64,7 @@
         <li>
           <a
             routerLink="/requests"
-            routerLinkActive="menu-active"
+            routerLinkActive="menu-active text-brand-400"
           >
             Solicitudes
           </a>
@@ -80,7 +80,7 @@
         <a 
           routerLink="/login" 
           routerLinkActive="btn-active"
-          class="btn btn-primary"
+          class="btn btn-primary border-none bg-brand-600 hover:bg-brand-500 text-white"
         >
           Cuenta
         </a>
@@ -89,20 +89,20 @@
   </div>
 
   <div class="collapse-content lg:hidden z-10 relative">
-    <ul class="menu rounded-box bg-base-200 p-2 font-medium shadow-lg">
+    <ul class="menu rounded-box bg-slate-800 p-2 font-medium shadow-lg text-white">
       <li>
         <a
           routerLink="/"
-          routerLinkActive="menu-active"
+          routerLinkActive="bg-slate-700"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          Home
+          Inicio
         </a>
       </li>
       <li>
         <a
           routerLink="/projects"
-          routerLinkActive="menu-active"
+          routerLinkActive="bg-slate-700"
         >
           Proyectos
         </a>
@@ -110,21 +110,21 @@
       <li>
         <a
           routerLink="/requests"
-          routerLinkActive="menu-active"
+          routerLinkActive="bg-slate-700"
         >
           Solicitudes
         </a>
       </li>
 
-      <li class="mt-2 border-t border-base-300 pt-2">
+      <li class="mt-2 border-t border-slate-700 pt-2">
         @if (authService.currentUser$ | async; as user) {
-          <span class="font-bold text-base-content/70 px-4">{{ user.email }}</span>
-          <a (click)="logout()" class="font-bold text-error mt-1">Salir</a>
+          <span class="font-bold text-slate-300 px-4">{{ user.email }}</span>
+          <a (click)="logout()" class="font-bold text-red-400 mt-1">Salir</a>
         } @else {
           <a
             routerLink="/login"
-            routerLinkActive="menu-active"
-            class="font-bold text-primary"
+            routerLinkActive="bg-slate-700"
+            class="font-bold text-brand-400"
           >
             Cuenta
           </a>
