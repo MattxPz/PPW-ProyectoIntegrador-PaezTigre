@@ -10,7 +10,6 @@
     <aside class="sticky top-17 h-[calc(100vh-68px)] w-64 shrink-0 border-r border-slate-200 bg-white z-30 hidden md:flex flex-col p-8 shadow-sm overflow-y-auto">
         <div class="mb-12">
             <h1 class="text-2xl font-bold text-slate-900 mb-1">DevPortfolio</h1>
-            <p class="text-sm font-medium text-brand-600">Arquitectos Técnicos</p>
         </div>
         
         <nav class="flex flex-col gap-2 grow">
@@ -62,7 +61,6 @@
     </aside>
 
     <main class="flex-1 w-full min-h-screen pt-16 md:pt-0">
-        
         <section class="min-h-screen flex flex-col justify-center px-6 py-20 md:px-12 lg:px-16" id="about">
             <div class="w-full max-w-7xl mx-auto">
                 <h1 class="text-5xl md:text-6xl lg:text-[80px] font-extrabold tracking-tight text-slate-900 mb-8 leading-tight">
@@ -85,39 +83,29 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8 lg:gap-12 cursor-pointer">
-                    <!-- Card de Mateo -->
-                    <a routerLink="/programador/mateo" class="bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-brand-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-brand-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
-                        <div>
-                            <div class="flex items-center gap-6 mb-8">
-                                <img alt="Mateo Páez" class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover shrink-0" src="/FotoPerfil_Mateo.jpeg"/>
-                                <div>
-                                    <h3 class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Mateo Páez</h3>
-                                    <p class="text-sm font-bold text-brand-600 uppercase tracking-wider">Arquitecto Front-End y Redes</p>
+                    @for (prog of programadores(); track prog.id) {
+                        <a [routerLink]="['/programador', prog.documentId || prog.id]" class="bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-brand-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-brand-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                            <div>
+                                <div class="flex items-center gap-6 mb-8">
+                                    <img [alt]="prog.nombre" class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover shrink-0" 
+                                            [src]="prog.fotoPerfil ? prog.fotoPerfil.url : '/FotoPerfil_John.jpeg'"/>
+                                    <div>
+                                        <h3 class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">{{ prog.nombre }}</h3>
+                                        <p class="text-sm font-bold text-brand-600 uppercase tracking-wider">{{ prog.titular || 'Desarrollador' }}</p>
+                                    </div>
                                 </div>
+                                <p class="text-slate-600 text-lg leading-relaxed">
+                                    {{ prog.descripcionBreve || 'Sin descripción disponible.' }}
+                                </p>
                             </div>
-                            <p class="text-slate-600 text-lg leading-relaxed">
-                                Especializado en frameworks modernos como React y Angular. Mateo transforma requerimientos técnicos complejos en interfaces responsivas con Tailwind CSS, mientras implementa estructuras de bases de datos y redes avanzadas.
-                            </p>
+                        </a>
+                    } @empty {
+                        <div class="col-span-2 text-center py-10">
+                            <span class="loading loading-spinner loading-lg text-indigo-600"></span>
+                            <p class="text-slate-500 mt-4">Cargando programadores desde la nube...</p>
                         </div>
-                    </a>
-
-                    <!-- Card de John Tigre -->
-                    <a routerLink="/programador/john" class="bg-white p-8 lg:p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
-                        <div>
-                            <div class="flex items-center gap-6 mb-8">
-                                <img alt="John Tigre" class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover shrink-0" src="/FotoPerfil_John.jpeg"/>
-                                <div>
-                                    <h3 class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-indigo-600 transition-colors">John Tigre</h3>
-                                    <p class="text-sm font-bold text-brand-600 uppercase tracking-wider">Especialista Back-End</p>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-lg leading-relaxed">
-                                Un puente entre el diseño y la ingeniería. John utiliza lenguajes del lado del servidor y frameworks modernos para construir APIs seguras, administrar sistemas distribuidos y asegurar un flujo de datos continuo.
-                            </p>
-                        </div>
-                    </a>
+                    }
                 </div>
             </div>
         </section>

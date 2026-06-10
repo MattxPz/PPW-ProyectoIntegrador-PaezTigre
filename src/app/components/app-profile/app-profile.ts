@@ -1,76 +1,64 @@
-import { Component, inject, signal, AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { TitleCasePipe } from '@angular/common';
-import { StrapiService } from '../../services/strapi.service'; 
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-profile',
+    standalone: true,
     imports: [RouterLink],
-    templateUrl: './app-profile.html'
+    templateUrl: './app-profile.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppProfile implements AfterViewInit {
+export class AppProfile implements OnInit {
+    currentProfile = signal<any>(null);
+    
     private route = inject(ActivatedRoute);
-    private strapiService = inject(StrapiService); // Inyectamos la conexión a Strapi
+    private http = inject(HttpClient);
 
-    @ViewChildren('reveal') revealElements!: QueryList<ElementRef>;
-
-    developerId = signal<string | null>(null);
-
-    currentProfile = signal<any>(null); 
-
-    constructor() {
+    ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const id = params.get('id'); 
-        this.developerId.set(id);
-        this.cargarDatosDesdeStrapi(id);
-    });
-    }
-
-    cargarDatosDesdeStrapi(slugBuscado: string | null) {
-    if (!slugBuscado) return;
-
-    this.strapiService.getProgramadores().subscribe({
-        next: (response) => {
-        // Strapi v5 devuelve el array de registros dentro de "data"
-        const todosLosProgramadores = response.data;
+        const id = params.get('id');
+        if (id) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
         
-        // Filtramos para encontrar el que coincida con la URL (ej. slug == 'john')
-        const perfilEncontrado = todosLosProgramadores.find(
-            (programador: any) => programador.slug === slugBuscado
-        );
-
-        if (perfilEncontrado) {
-            this.currentProfile.set(perfilEncontrado);
-            
-            setTimeout(() => this.initScrollAnimations(), 100);
-        }
-        },
-        error: (error) => {
-        console.error('Error al conectar con Strapi:', error);
+        this.cargarPerfilDesdeStrapi(id);
         }
     });
     }
 
-ngAfterViewInit() {
-    this.initScrollAnimations();
-}
+    cargarPerfilDesdeStrapi(id: string) {
+    const url = `https://healing-event-664102f8e1.strapiapp.com/api/programadors/${id}?populate=*`;
+    
+    this.http.get<any>(url).subscribe({
+        next: (response) => {
+        this.currentProfile.set(response.data);
+        
+        setTimeout(() => {
+            this.iniciarAnimacionesScroll();
+        }, 50);
+        },
+        error: (err) => {
+        console.error('Error al cargar el perfil desde la nube:', err);
+        }
+    });
+    }
 
-initScrollAnimations() {
+    iniciarAnimacionesScroll() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.remove('opacity-0', 'translate-y-12');
             entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.remove('opacity-0', 'translate-y-12');
         } else {
             entry.target.classList.remove('opacity-100', 'translate-y-0');
             entry.target.classList.add('opacity-0', 'translate-y-12');
         }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
-    this.revealElements.forEach(el => {
-        el.nativeElement.classList.add('opacity-0', 'translate-y-12', 'transition-all', 'duration-700', 'ease-out');
-        observer.observe(el.nativeElement);
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-12');
+        observer.observe(section);
     });
     }
 }
