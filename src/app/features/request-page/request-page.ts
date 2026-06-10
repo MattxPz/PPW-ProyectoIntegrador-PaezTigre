@@ -1,3 +1,4 @@
+
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Auth, user, User } from '@angular/fire/auth';
@@ -25,6 +26,7 @@ export class RequestsPageComponent implements OnInit {
   private auth = inject(Auth);
   private firestore = inject(Firestore);
 
+  isAuthenticated = signal<boolean>(false); 
   userRole = signal<'admin' | 'cliente' | null>(null);
   solicitudes = signal<Solicitud[]>([]);
   isLoading = signal(true);
@@ -32,9 +34,10 @@ export class RequestsPageComponent implements OnInit {
   ngOnInit() {
     user(this.auth).subscribe(async (usr) => {
       if (usr) {
-        // Pasamos el objeto de usuario completo para acceder a su email
+        this.isAuthenticated.set(true); 
         await this.cargarPerfilYDatos(usr);
       } else {
+        this.isAuthenticated.set(false); 
         this.isLoading.set(false);
       }
     });
@@ -49,7 +52,6 @@ export class RequestsPageComponent implements OnInit {
         const role = userSnap.data()['role'];
         this.userRole.set(role);
         
-        // Mapear el correo al identificador del programador
         let programadorId = '';
         if (usr.email === 'mpaez94144@gmail.com') {
           programadorId = 'mateo';
@@ -71,10 +73,8 @@ export class RequestsPageComponent implements OnInit {
     let q;
 
     if (role === 'admin') {
-      // Filtramos las solicitudes que sean para "ambos" o exclusivamente para el admin actual
       q = query(solicitudesRef, where('idProgramador', 'in', ['ambos', programadorId]));
     } else {
-      // Si es cliente, ve únicamente las suyas
       q = query(solicitudesRef, where('uidSolicitante', '==', uid));
     }
 
@@ -85,8 +85,6 @@ export class RequestsPageComponent implements OnInit {
       data.push({ id: docSnap.id, ...docSnap.data() } as Solicitud);
     });
 
-    // Ordenamos por fecha de creación localmente.
-    // Esto evita requerir la creación manual de un índice compuesto en Firebase Console
     data.sort((a, b) => new Date(b.fechaCreacion).getTime() - new Date(a.fechaCreacion).getTime());
 
     this.solicitudes.set(data);
@@ -105,3 +103,4 @@ export class RequestsPageComponent implements OnInit {
     }
   }
 }
+
