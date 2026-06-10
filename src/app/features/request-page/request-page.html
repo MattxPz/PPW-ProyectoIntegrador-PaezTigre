@@ -34,6 +34,16 @@
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
             </div>
+        } @else if (!isAuthenticated()) {
+            <div class="w-full bg-white p-16 rounded-[2.5rem] border border-slate-100 shadow-sm text-center flex flex-col items-center">
+                <div class="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 mb-6 border border-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                    </svg>
+                </div>
+                <h3 class="text-3xl font-bold text-slate-900 mb-4">Authentication Required</h3>
+                <p class="text-slate-600 text-lg max-w-md">Please log in or create an account to view and manage your project requests in this section.</p>
+            </div>
         } @else if (solicitudes().length === 0) {
             <div class="w-full bg-white p-16 rounded-[2.5rem] border border-slate-100 shadow-sm text-center flex flex-col items-center">
                 <div class="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-300 mb-6 border border-slate-100">
@@ -47,7 +57,7 @@
         } @else {
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 @for (req of solicitudes(); track req.id) {
-                    <article class="bg-white p-8 lg:p-10 rounded-4x1 border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-300 relative overflow-hidden flex flex-col h-full group">
+                    <article class="bg-white p-8 lg:p-10 rounded-4xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-300 relative overflow-hidden flex flex-col h-full group">
                         
                         <div class="absolute top-0 right-0 w-40 h-40 bg-slate-50 rounded-bl-full -z-10 group-hover:scale-110 group-hover:bg-blue-50 transition-all duration-500"></div>
 
@@ -115,3 +125,4 @@
         }
     </div>
 </section>
+

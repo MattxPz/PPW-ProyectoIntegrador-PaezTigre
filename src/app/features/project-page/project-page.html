@@ -1,62 +1,6 @@
-<div class="md:hidden bg-white border-b border-slate-200 fixed top-0 w-full z-50 flex justify-between items-center p-4 shadow-sm">
-    <h1 class="text-xl font-bold text-slate-900">DevPortfolio</h1>
-    <button (click)="toggleMenu()" class="text-slate-600">
-        <span class="material-symbols-outlined">{{ isMobileMenuOpen() ? 'close' : 'menu' }}</span>
-    </button>
-</div>
-
-<aside class="fixed left-0 h-screen w-64 border-r border-slate-200 bg-white z-40 flex-col p-8 shadow-sm transition-transform duration-300 md:flex"
-       [class.hidden]="!isMobileMenuOpen() && 'hidden'"
-       [class.flex]="isMobileMenuOpen()">
+<main class="w-full min-h-screen bg-slate-50/50">
     
-    <div class="mb-12">
-        <h1 class="text-2xl font-bold text-slate-900 mb-1">DevPortfolio</h1>
-        <p class="text-sm font-medium text-indigo-600">Technical Architects</p>
-    </div>
-    
-    <nav class="flex flex-col gap-2 grow">
-        <a href="#about" (click)="isMobileMenuOpen.set(false)"
-           class="group flex items-center gap-3 p-3 rounded-xl transition-all"
-           [class]="activeSection() === 'about' ? 'bg-indigo-50 text-indigo-900 font-bold' : 'text-slate-500 hover:bg-slate-50 font-medium'">
-            <span class="material-symbols-outlined">group</span>
-            <span>The Team</span>
-        </a>
-        <a href="#skills" (click)="isMobileMenuOpen.set(false)"
-           class="group flex items-center gap-3 p-3 rounded-xl transition-all"
-           [class]="activeSection() === 'skills' ? 'bg-indigo-50 text-indigo-900 font-bold' : 'text-slate-500 hover:bg-slate-50 font-medium'">
-            <span class="material-symbols-outlined">bolt</span>
-            <span>Expertise</span>
-        </a>
-        <a href="#projects" (click)="isMobileMenuOpen.set(false)"
-           class="group flex items-center gap-3 p-3 rounded-xl transition-all"
-           [class]="activeSection() === 'projects' ? 'bg-indigo-50 text-indigo-900 font-bold' : 'text-slate-500 hover:bg-slate-50 font-medium'">
-            <span class="material-symbols-outlined">code</span>
-            <span>Project Archive</span>
-        </a>
-        <a href="#contact" (click)="isMobileMenuOpen.set(false)"
-           class="group flex items-center gap-3 p-3 rounded-xl transition-all"
-           [class]="activeSection() === 'contact' ? 'bg-indigo-50 text-indigo-900 font-bold' : 'text-slate-500 hover:bg-slate-50 font-medium'">
-            <span class="material-symbols-outlined">mail</span>
-            <span>Contact</span>
-        </a>
-    </nav>
-
-    <div class="mt-auto pt-8 border-t border-slate-100">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                <span class="material-symbols-outlined text-sm">wifi</span>
-            </div>
-            <div>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Status</p>
-                <p class="text-sm font-medium text-green-600">Available for work</p>
-            </div>
-        </div>
-    </div>
-</aside>
-
-<main class="md:ml-64 min-h-screen pt-16 md:pt-0 bg-slate-50/50">
-    
-    <section class="min-h-screen flex flex-col justify-center px-6 py-20 md:px-12 lg:px-16" id="about">
+    <section class="w-full min-h-screen flex flex-col justify-center px-6 py-20 md:px-12 lg:px-16" id="about">
         <div class="w-full max-w-7xl mx-auto">
             <h1 class="text-5xl md:text-6xl lg:text-[70px] font-extrabold tracking-tight text-slate-900 mb-8 leading-tight">
                 Collaborative <br>
@@ -71,7 +15,7 @@
                     <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
                     <div class="relative z-10">
                         <div class="flex items-center gap-6 mb-6">
-                            <img src="https://cdn.nba.com/manage/2018/09/lebron-iso-akron-school.jpg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-sm" alt="Mateo">
+                            <img src="/FotoPerfil_Mateo.jpeg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-sm" alt="Mateo">
                             <div>
                                 <h3 class="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">Mateo Paez</h3>
                                 <p class="text-sm font-bold text-indigo-600 uppercase tracking-wider">Architect & UI Lead</p>
@@ -85,7 +29,7 @@
                     <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
                     <div class="relative z-10">
                         <div class="flex items-center gap-6 mb-6">
-                            <img src="https://i.pinimg.com/236x/29/af/15/29af15e8f552fa65477e3801b297e3d1.jpg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-sm" alt="John">
+                            <img src="/FotoPerfil_John.jpeg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-sm" alt="John">
                             <div>
                                 <h3 class="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">John Tiger</h3>
                                 <p class="text-sm font-bold text-blue-600 uppercase tracking-wider">Backend Specialist</p>
@@ -98,7 +42,7 @@
         </div>
     </section>
 
-    <section class="bg-white px-6 py-24 md:px-12 lg:px-16 border-y border-slate-100" id="skills">
+    <section class="w-full bg-white px-6 py-24 md:px-12 lg:px-16 border-y border-slate-100" id="skills">
         <div class="w-full max-w-7xl mx-auto text-center">
             <h2 class="text-3xl font-bold text-slate-900 mb-16 italic">"El software exitoso es el resultado de una visión compartida."</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -122,7 +66,7 @@
         </div>
     </section>
 
-    <section class="px-6 py-24 md:px-12 lg:px-16" id="projects">
+    <section class="w-full px-6 py-24 md:px-12 lg:px-16" id="projects">
         <div class="w-full max-w-7xl mx-auto">
             <div class="mb-16">
                 <p class="text-sm font-bold text-indigo-600 uppercase tracking-widest mb-2">Joint Roadmap 2020-2026</p>
@@ -166,7 +110,7 @@
         </div>
     </section>
 
-    <section class="px-6 py-20 md:px-12 lg:px-16" id="contact">
+    <section class="w-full px-6 py-20 md:px-12 lg:px-16" id="contact">
         <div class="w-full max-w-7xl mx-auto bg-slate-900 rounded-[3rem] p-12 text-white relative overflow-hidden">
             <div class="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">¿Listos para el siguiente hito?</h2>
@@ -180,3 +124,4 @@
         </div>
     </section>
 </main>
+
