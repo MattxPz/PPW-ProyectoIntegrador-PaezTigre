@@ -418,19 +418,6 @@ Estados disponibles:
 
 ---
 
-# Video de Presentacion del Proyecto
-
-## Duracion Recomendada
-
-10 minutos.
-
-## Estructura de la Presentacion
-
-### Introduccion
-
-* Presentacion del proyecto.
-* Objetivos.
-
 ### Arquitectura
 
 * Angular.
