@@ -9,7 +9,7 @@ export class StrapiService {
 
   private http = inject(HttpClient);
   
-  private apiUrl = 'http://localhost:1337/api';
+  private apiUrl = 'https://healing-event-664102f8e1.strapiapp.com/api';
 
 
   getProgramadores(): Observable<any> {
