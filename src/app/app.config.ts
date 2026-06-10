@@ -9,13 +9,7 @@ import { getAnalytics } from "firebase/analytics";
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(
-      routes,
-      withInMemoryScrolling({
-        scrollPositionRestoration: 'enabled'
-      })
-    ),
-    
+    provideRouter(routes),
     provideHttpClient(),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
