@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { UpperCasePipe, AsyncPipe } from '@angular/common';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/services/auth.service';
 
 
 @Component({
