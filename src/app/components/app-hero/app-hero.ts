@@ -1,13 +1,9 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit, signal } from '@angular/core';
-import { user } from '@angular/fire/auth';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, signal, inject } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router'; 
-
-import { inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Auth, User } from '@angular/fire/auth';
+import { HttpClient } from '@angular/common/http'; 
+import { Auth, User, user } from '@angular/fire/auth';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
-
 
 @Component({
   selector: 'app-hero',
@@ -22,10 +18,13 @@ export class AppHero implements OnInit {
   private fb = inject(FormBuilder);
   private auth = inject(Auth);
   private firestore = inject(Firestore);
+  private http = inject(HttpClient); 
 
   currentUser = signal<User | null>(null);
   isLoading = signal(false);
   successMsg = signal<string | null>(null);
+  
+  programadores = signal<any[]>([]);
 
   contactForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -55,6 +54,17 @@ export class AppHero implements OnInit {
     user(this.auth).subscribe(usr => {
       this.currentUser.set(usr);
     });
+    this.cargarProgramadores();
+  }
+
+  cargarProgramadores() {
+    this.http.get<any>('https://healing-event-664102f8e1.strapiapp.com/api/programadors?populate=*')
+      .subscribe({
+        next: (response) => {
+          this.programadores.set(response.data);
+        },
+        error: (err) => console.error('Error cargando programadores:', err)
+      });
   }
 
   async onSubmit() {
@@ -87,6 +97,4 @@ export class AppHero implements OnInit {
       this.isLoading.set(false);
     }
   }
-
-
 }

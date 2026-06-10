@@ -11,33 +11,26 @@
             </p>
             
             <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-                <a routerLink="/programador/mateo" class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group block cursor-pointer">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-6 mb-6">
-                            <img src="/FotoPerfil_Mateo.jpeg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-sm" alt="Mateo">
-                            <div>
-                                <h3 class="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">Mateo Paez</h3>
-                                <p class="text-sm font-bold text-indigo-600 uppercase tracking-wider">Architect & UI Lead</p>
+                @for (prog of programadores(); track prog.id) {
+                    <a [routerLink]="['/programador', prog.documentId || prog.id]" class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group block cursor-pointer">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-6 mb-6">
+                                <img [src]="prog.fotoPerfil ? prog.fotoPerfil.url : '/FotoPerfil_Mateo.jpeg'" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-sm" [alt]="prog.nombre">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">{{ prog.nombre }}</h3>
+                                    <p class="text-sm font-bold text-indigo-600 uppercase tracking-wider">{{ prog.titular || 'Desarrollador' }}</p>
+                                </div>
                             </div>
+                            <p class="text-slate-500 text-sm">Haz clic para ver el perfil individual y tecnologías específicas de {{ prog.nombre }}.</p>
                         </div>
-                        <p class="text-slate-500 text-sm">Haz clic para ver el perfil individual y tecnologías específicas de Mateo.</p>
+                    </a>
+                } @empty {
+                    <div class="col-span-2 text-center py-10">
+                        <span class="loading loading-spinner text-indigo-600"></span>
+                        <p class="text-slate-500 mt-2">Cargando perfiles...</p>
                     </div>
-                </a>
-
-                <a routerLink="/programador/john" class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-300 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group block cursor-pointer">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-6 mb-6">
-                            <img src="/FotoPerfil_John.jpeg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-sm" alt="John">
-                            <div>
-                                <h3 class="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">John Tigre</h3>
-                                <p class="text-sm font-bold text-blue-600 uppercase tracking-wider">Backend Specialist</p>
-                            </div>
-                        </div>
-                        <p class="text-slate-500 text-sm">Haz clic para ver el perfil individual y soluciones de servidor de John.</p>
-                    </div>
-                </a>
+                }
             </div>
         </div>
     </section>
